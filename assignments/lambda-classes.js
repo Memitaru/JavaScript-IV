@@ -40,18 +40,18 @@ class Student extends Person {
         this.faveSubjects = attributes.faveSubjects;
     }
 
-    listSubjects() {
-        student.faveSubjects.forEach(function(subject){
+    listSubjects(subjects) {
+        this.faveSubjects.forEach(function(subject){
             console.log(subject);
         })
     }
 
     PRAssignment(subject){
-        console.log(`${student.name} has submitted a PR for ${subject}.`)
+        console.log(`${this.name} has submitted a PR for ${subject}.`)
     }
 
     sprintChallenge(subject){
-        console.log(`${student.name} has begun sprint challenge on ${subject}.`)
+        console.log(`${this.name} has begun sprint challenge on ${subject}.`)
     }
 
 }
@@ -72,3 +72,84 @@ class ProjectManager extends Instructor {
     }
 
 }
+
+// Instructor Objects
+
+const sam = new Instructor ({
+    name: "Sam",
+    age: 34,
+    location: "Idaho",
+    gender: "Female",
+    speciality: "React",
+    catchPhrase: "What kind of person has a catch phrase?",
+})
+
+const brad = new Instructor ({
+    name: "Brad",
+    age: 41,
+    location: "Nebraska",
+    gender: "Male",
+    speciality: "JavaScript",
+    catchPhrase: "Don't forget to ask for help if you get stuck!"
+})
+
+// Project Manager Objects
+
+const julie = new ProjectManager({
+    name: "Julie",
+    age: 25,
+    location: "Florida",
+    gender: "Male",
+    speciality: "CSS",
+    catchPhrase: "Check out this YouTube tutorial.",
+    gradClassName: "FSW13",
+    favInstructor: sam
+})
+
+const robert = new ProjectManager({
+    name: "Robert",
+    age: 28,
+    location: "New York",
+    speciality: "None",
+    catchPhrase: "Keep trying and you'll get it!",
+    gradClassName: "FSW14",
+    favInstructor: brad
+})
+
+// Student Objects
+
+const ami = new Student({
+    name: "Ami",
+    age: 30,
+    location: "Washington",
+    gender: "Nonbinary",
+    previousBackground: "delivery person",
+    className: "webpt4",
+    faveSubjects: ['CSS preprocessors', 'JavaScript']
+})
+
+const dave = new Student({
+    name: "Dave",
+    age: 40,
+    location: "Washington",
+    gender: "Male",
+    previousBackground: "php developer",
+    className: "webpt5",
+    faveSubjects: ['JavaScript', 'React']
+})
+
+// testing instructors
+
+sam.demo("array methods");
+brad.grade(ami, "LESS");
+
+// testing project managers
+
+julie.standUp("webpt4_julie");
+robert.debugsCode(ami, "JavaScript classes");
+
+// testing students
+
+ami.listSubjects();
+dave.PRAssignment("JavaScript I");
+ami.sprintChallenge("JavaScript Fundamentals")
